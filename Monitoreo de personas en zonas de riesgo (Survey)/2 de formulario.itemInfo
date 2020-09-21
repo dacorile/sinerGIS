@@ -1,0 +1,50 @@
+{
+    "access": "public",
+    "accessInformation": null,
+    "appCategories": [
+    ],
+    "avgRating": 0,
+    "banner": null,
+    "categories": [
+    ],
+    "commentsEnabled": true,
+    "created": 1600553250000,
+    "culture": "es-co",
+    "description": "This template includes only those features that are supported in both the ArcGIS Survey123 field app and web app.",
+    "documentation": null,
+    "extent": [
+    ],
+    "groupDesignations": null,
+    "guid": null,
+    "industries": [
+    ],
+    "isOrgItem": true,
+    "languages": [
+    ],
+    "largeThumbnail": null,
+    "licenseInfo": null,
+    "listed": false,
+    "modified": 1600553251000,
+    "numComments": 0,
+    "numRatings": 0,
+    "numViews": 5,
+    "orgId": "deQSb0Gn7gDPf3uV",
+    "properties": null,
+    "proxyFilter": null,
+    "scoreCompleteness": 43,
+    "screenshots": [
+    ],
+    "size": 320458,
+    "snippet": null,
+    "spatialReference": null,
+    "thumbnail": "thumbnail/Monitoreo_de_personas_en_zonas_de_riesgo.png",
+    "title": "2 de formulario",
+    "type": "Form",
+    "typeKeywords": [
+        "Form",
+        "Survey123",
+        "Survey123 Connect",
+        "xForm"
+    ],
+    "url": null
+}
