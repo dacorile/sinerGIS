@@ -151,6 +151,7 @@
 
     <script src="https://js.arcgis.com/4.16/"></script>
     <script>
+        //Modulos de Esri
         require([
             "esri/Map",
             "esri/views/MapView",
@@ -195,6 +196,7 @@
                 },
             });
 
+            //Configuración pop-ups
             var templateAeropuerto = {
                 title: "<i class='fas fa-plane-departure mr-2'></i> {Aeropuerto}",
                 content: `
@@ -274,6 +276,7 @@
                           `,
             };
 
+            //Configuracion mapa de calor
             const renderer = {
                 type: "heatmap",
                 colorStops: [{
@@ -320,6 +323,7 @@
                 minPixelIntensity: 0
             };
 
+            //llamado de las capas mediante servicios
             // Aeropuertos
             var aeropuertos = new FeatureLayer({
                 url: "https://services.arcgis.com/deQSb0Gn7gDPf3uV/arcgis/rest/services/MapaSinerGIS/FeatureServer/1",
@@ -362,18 +366,19 @@
                 popupTemplate: templateUniversidad,
                 visible: false,
             });
-
+            // Reportes
             var reporte = new FeatureLayer({
                 url: "https://services.arcgis.com/deQSb0Gn7gDPf3uV/arcgis/rest/services/service_ebabb20f3fe74c1a802f74db61d01cb2/FeatureServer/0",
                 outFields: ["*"],
                 popupTemplate: templateReporte,
                 renderer: renderer
             });
-
+            //Departamentos
             var departments = new FeatureLayer({
                 url: "https://services.arcgis.com/deQSb0Gn7gDPf3uV/arcgis/rest/services/Mapa_departamentos_de_Colombia/FeatureServer",
             });
-
+           
+            // Adición de capas
             map.add(departments);
             map.add(aeropuertos);
             map.add(bibliotecas);
@@ -383,6 +388,7 @@
             map.add(universidades);
             map.add(reporte);
 
+            //Creación de variables para el manejo de las capas
             var aeropuertosLayerToggle = document.getElementById(
                 "aeropuertosLayer"
             );
@@ -399,6 +405,7 @@
             );
             var reporteLayerToggle = document.getElementById("reporteLayer");
 
+            //Eventos creados para el cambio en la visualización de las capas
             aeropuertosLayerToggle.addEventListener("change", function() {
                 aeropuertos.visible = aeropuertosLayerToggle.checked;
             });
@@ -427,6 +434,7 @@
                 reporte.visible = reporteLayerToggle.checked;
             });
 
+            //configuración del buscador
             const sources = [{
                 layer: aeropuertos,
                 searchFields: ["Aeropuerto", "Quindío"],
@@ -436,12 +444,13 @@
                 name: "Aeropuertos",
                 placeholder: "Aeropuerto el Dorado",
                 zoomScale: 10000,
-            }, {
+            }, 
+            {
                 layer: bibliotecas,
                 searchFields: [
                     "NOMBRE_DE_LA_BIBLIOTECA",
                     "DIRECCIÓN_DE_LA_BIBLIOTECA",
-                ],
+                 ],
                 suggestionTemplate: "{NOMBRE_DE_LA_BIBLIOTECA}",
                 exactMatch: false,
                 outFields: ["*"],
@@ -457,7 +466,8 @@
                 name: "Centros Comerciales",
                 placeholder: "Gran Estación",
                 zoomScale: 10000,
-            }, {
+            }, 
+            {
                 layer: mercados,
                 searchFields: ["Nombre_Cad", "Direccion"],
                 suggestionTemplate: "{Nombre_Cad} - { Direccion }",
@@ -486,11 +496,12 @@
                 zoomScale: 10000,
             }, ];
 
+            //configuración del widget de cambio de mapa base
             var toggle = new BasemapToggle({
                 view: view,
                 nextBasemap: "hybrid",
             });
-
+            //Creación del buscador
             const searchWidget = new Search({
                 view: view,
                 allPlaceholder: "Buscar",
@@ -499,7 +510,7 @@
             });
 
 
-
+            // Features para la visualización de las tablas según la capa
             const featureTableSuper = new FeatureTable({
                 view: view,
                 layer: mercados,
@@ -638,6 +649,8 @@
                 ],
                 container: document.getElementById("tableDivAglo"),
             });
+
+            //Adición de los widgets
 
             view.ui.add(searchWidget, {
                 position: "top-right",
